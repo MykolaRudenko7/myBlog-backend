@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import multer from "multer";
@@ -5,7 +6,7 @@ import multer from "multer";
 import { create, getAll, getOne, remove, update } from './controllers/PostController.js';
 import { getMe, login, register } from './controllers/UserController.js';
 // utils
-import {checkAuth, handleValidationErrors} from './utils/index.js';
+import { checkAuth, handleValidationErrors } from './utils/index.js';
 // validate
 import { loginValidation, postValidation, registerValidation } from './validations/index.js';
 //
@@ -36,6 +37,7 @@ const storage = multer.diskStorage({ //шлях до сховища зображ
 
 const upload = multer({ storage })
 app.use(express.json());
+app.use(cors()) //виправлення запросів
 app.use('/uploads', express.static('uploads'))
 //
 //
