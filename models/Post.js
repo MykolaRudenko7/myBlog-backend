@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
-
-
+//
+//
+//
+//
+//
 // тут схема з властивостями користувача (якщо передаю об'єкт, то значить це обов'язкове поле)
 const PostSchema = new mongoose.Schema(
 	{
@@ -32,7 +35,5 @@ const PostSchema = new mongoose.Schema(
 		// схема автоматично при створ статті, має дати дату створ. і обновл
 		timestamps: true,
 	});
-
-
 
 export default mongoose.model('Post', PostSchema)

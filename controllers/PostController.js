@@ -1,5 +1,9 @@
 import PostModel from '../models/Post.js';
-
+//
+//
+//
+//
+//
 // отримую всі статті
 export const getAll = async (request, response) => {
 	try {
@@ -106,6 +110,33 @@ export const create = async (request, response) => {
 		console.log('Error:', error);
 		response.status(500).json({
 			message: 'Не вдалося створити статтю'
+		})
+	}
+}
+
+// оновлюю
+export const update = async (request, response) => {
+	try {
+		const postId = request.params.id;
+		await PostModel.updateOne(
+			{
+				_id: postId,
+			},
+			{
+				title: request.body.title,
+				text: request.body.text,
+				tags: request.body.tags,
+				imageUrl: request.body.imageUrl,
+				user: request.userId
+			})
+
+		response.json({
+			success: true,
+		})
+	} catch (error) {
+		console.log('Error:', error);
+		response.status(500).json({
+			message: 'Не вдалося оновити статтю'
 		})
 	}
 }

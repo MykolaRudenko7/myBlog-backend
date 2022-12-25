@@ -1,6 +1,10 @@
 import jwt from 'jsonwebtoken';
+//
+//
+//
+//
+//
 // чи можна повертати якусь інф
-
 export default (request, response, next) => {
 
 	const token = (request.headers.authorization || '').replace(/Bearer\s?/, ''); // беру токін з запиту авторизації

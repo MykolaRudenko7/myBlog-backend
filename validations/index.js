@@ -1,6 +1,9 @@
 import { body } from 'express-validator'
-
-
+//
+//
+//
+//
+// 
 export const loginValidation = [
 	body('email', "Невірний формат пошти").isEmail(), 	// check is email
 	body('password', "Недостатня кількість символів").isLength({ min: 5 }), // якщо довжина паролю більше 5 символів, то ок
