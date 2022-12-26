@@ -18,13 +18,13 @@ export const getAll = async (request, response) => {
 };
 
 // отримую теги
-export const getLustTags = async (request, response) => {
+export const getLastTags = async (request, response) => {
 	try {
 		const posts = await PostModel.find().limit(5).exec(); // зв'язок
-		const tags = posts.map(obj => obj.tags)
-		.flat()
-		.slice(0, 5)
-		response.json(posts);
+
+		const tags = posts.map(obj => obj.tags).flat().slice(0, 5)
+		
+		response.json(tags);
 	} catch (error) {
 		console.log('Error:', error);
 		response.status(500).json({

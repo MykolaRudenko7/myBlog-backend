@@ -3,7 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import multer from "multer";
 // controllers
-import { create, getAll, getLustTags, getOne, remove, update } from './controllers/PostController.js';
+import { create, getAll, getLastTags, getOne, remove, update } from './controllers/PostController.js';
 import { getMe, login, register } from './controllers/UserController.js';
 // utils
 import { checkAuth, handleValidationErrors } from './utils/index.js';
@@ -51,14 +51,14 @@ app.post('/upload', checkAuth, upload.single('image'), (request, response) => {
 	});
 })
 
-app.get('/tags', getLustTags); //	отримую теги
+app.get('/tags', getLastTags); //	отримую теги
 
 app.post('/auth/login', loginValidation, handleValidationErrors, login); // авторизація
 app.post('/auth/register', registerValidation, handleValidationErrors, register); // реєстрація
 app.get('/auth/me', checkAuth, getMe); // про себе
 
 app.get('/posts', getAll); //	отримую всіх користувачів
-app.get('/posts/tags', getLustTags); //	отримую теги
+app.get('/posts/tags', getLastTags); //	отримую теги
 app.get('/posts/:id', getOne); // одну
 app.post('/posts', checkAuth, postValidation, handleValidationErrors, create); // створюю статтю
 app.delete('/posts/:id', checkAuth, remove); //захищенне через токін видалення
