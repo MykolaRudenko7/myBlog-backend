@@ -51,12 +51,14 @@ app.post('/upload', checkAuth, upload.single('image'), (request, response) => {
 	});
 })
 
+app.get('/tags', getLustTags); //	отримую теги
+
 app.post('/auth/login', loginValidation, handleValidationErrors, login); // авторизація
 app.post('/auth/register', registerValidation, handleValidationErrors, register); // реєстрація
 app.get('/auth/me', checkAuth, getMe); // про себе
 
 app.get('/posts', getAll); //	отримую всіх користувачів
-app.get('/posts.tags', getLustTags); //	отримую теги
+app.get('/posts/tags', getLustTags); //	отримую теги
 app.get('/posts/:id', getOne); // одну
 app.post('/posts', checkAuth, postValidation, handleValidationErrors, create); // створюю статтю
 app.delete('/posts/:id', checkAuth, remove); //захищенне через токін видалення
