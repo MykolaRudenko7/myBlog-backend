@@ -23,7 +23,7 @@ export const getLastTags = async (request, response) => {
 		const posts = await PostModel.find().limit(5).exec(); // зв'язок
 
 		const tags = posts.map(obj => obj.tags).flat().slice(0, 5)
-		
+
 		response.json(tags);
 	} catch (error) {
 		console.log('Error:', error);
@@ -63,7 +63,7 @@ export const getOne = async (request, response) => {
 
 				response.json(document) // якщо все ок даю док
 			},
-		);
+		).populate('user')
 	} catch (error) {
 		console.log('Error:', error);
 		response.status(500).json({
