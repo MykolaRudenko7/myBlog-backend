@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+import fs from 'fs';
 import mongoose from 'mongoose';
 import multer from "multer";
 // controllers
@@ -28,6 +29,9 @@ const app = express();
 // image storage
 const storage = multer.diskStorage({ //шлях до сховища зображнень
 	destination: (_, __, cb) => {
+		if (!fs.existsSync('uploads')) {
+			fs.mkdirSync('uploads'),
+		}
 		cb(null, 'uploads')
 	},
 	filename: (_, file, cb) => {
