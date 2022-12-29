@@ -141,7 +141,7 @@ export const update = async (request, response) => {
 			{
 				title: request.body.title,
 				text: request.body.text,
-				tags: request.body.tags,
+				tags: request.body.tags.split(','),
 				imageUrl: request.body.imageUrl,
 				user: request.userId
 			})
