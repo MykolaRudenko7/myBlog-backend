@@ -30,7 +30,7 @@ const app = express();
 const storage = multer.diskStorage({ //шлях до сховища зображнень
 	destination: (_, __, cb) => {
 		if (!fs.existsSync('uploads')) {
-			fs.mkdirSync('uploads'),
+			fs.mkdirSync('uploads')
 		}
 		cb(null, 'uploads')
 	},
