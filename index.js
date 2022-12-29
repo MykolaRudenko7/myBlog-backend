@@ -18,7 +18,7 @@ import { loginValidation, postValidation, registerValidation } from './validatio
 //
 // підключення до бази данних mongodb через бібліотеку mongoose:
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://admin:1NDE2g12ywyaA1ru@cluster0.pk4kpqd.mongodb.net/blog?retryWrites=true&w=majority',)
+mongoose.connect(process.env.MONGODB_URI)
 	.then(() => console.log('ok'))
 	.catch((err) => console.log(err));
 
@@ -68,7 +68,7 @@ app.patch('/posts/:id', postValidation, checkAuth, handleValidationErrors, updat
 //
 //
 //
-app.listen(7777, (err) => {
+app.listen(process.env.PORT || 7777, (err) => {
 	if (err) {
 		console.log('Error:', err);
 	} else {
