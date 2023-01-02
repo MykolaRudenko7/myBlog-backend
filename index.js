@@ -17,6 +17,7 @@ import { loginValidation, postValidation, registerValidation } from './validatio
 //
 //
 //
+// mongodb+srv://admin:1NDE2g12ywyaA1ru@cluster0.pk4kpqd.mongodb.net/blog?retryWrites=true&w=majority
 // підключення до бази данних mongodb через бібліотеку mongoose:
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGODB_URI)
